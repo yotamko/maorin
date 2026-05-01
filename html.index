@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מאור אינסטלציה בע״מ - שירותי אינסטלציה מקצועיים בצפון</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --secondary-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-top {
+            font-weight: 600;
+            color: var(--secondary-blue);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--white);
+            padding: 100px 5% 80px;
+            text-align: center;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-cta {
+            background-color: var(--accent-cyan);
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-cta:hover {
+            transform: scale(1.05);
+            background-color: var(--white);
+            color: var(--primary-blue);
+        }
+
+        /* About Section */
+        .section-padding {
+            padding: 80px 5%;
+        }
+
+        .about {
+            background: var(--white);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: var(--accent-cyan);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-bottom: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--secondary-blue);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-blue);
+            margin-bottom: 15px;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: #eef2f7;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 10px;
+        }
+
+        .customer-name {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            color: var(--primary-blue);
+        }
+
+        /* Advantages */
+        .advantages-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .adv-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            background: var(--white);
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .adv-item i {
+            color: #10b981;
+        }
+
+        /* Contact Form */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--secondary-blue);
+        }
+
+        .contact-info-box {
+            background: var(--primary-blue);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+        }
+
+        .info-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 40px 5%;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1001;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .section-padding { padding: 50px 5%; }
+            .header { padding: 1rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <i class="fas fa-faucet-drip"></i>
+            <span>מאור אינסטלציה בע״מ</span>
+        </div>
+        <a href="tel:0501234567" class="contact-top">050-1234567 <i class="fas fa-phone"></i></a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="animate-fade">
+            <h1>מאור אינסטלציה בע״מ</h1>
+            <p>שירותי אינסטלציה מקצועיים ואמינים בחיפה, קריות והצפון - זמינות גבוהה ומחירים הוגנים.</p>
+            <a href="#contact" class="btn-cta">צרו קשר עכשיו</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section-padding about">
+        <h2 class="section-title">קצת עלינו</h2>
+        <p>
+            "מאור אינסטלציה בע״מ" הוא עסק משפחתי בעל ניסיון של למעלה מ-10 שנים בתחום. אנו מתמחים במתן פתרונות אינסטלציה מקיפים למגזר הפרטי והעסקי ברחבי הצפון (חיפה, קריות, עכו, נהריה והסביבה). האני מאמין שלנו מבוסס על שלושה עקרונות ברזל: אמינות ללא פשרות, מקצועיות מקסימלית ושירות בגובה העיניים. אנו מבינים שתקלת אינסטלציה היא תמיד דחופה, ולכן אנו מקפידים על זמינות גבוהה והגעה מהירה.
+        </p>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section-padding" style="background: #f1f5f9;">
+        <div style="text-align: center;">
+            <h2 class="section-title">השירותים שלנו</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-water"></i>
+                <h3>פתיחת סתימות</h3>
+                <p>פתיחת כל סוגי הסתימות בכיורים, שירותים וקווי ביוב מרכזיים.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-tools"></i>
+                <h3>תיקון נזילות</h3>
+                <p>תיקון נזילות גלויות ונסתרות, החלפת גומיות וברזים דולפים.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-toilet"></i>
+                <h3>כלים סניטריים</h3>
+                <p>התקנת אסלות (כולל סמויות), כיורים, אמבטיות וברזים מעוצבים.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-sync"></i>
+                <h3>החלפת צנרת</h3>
+                <p>חידוש צנרת ישנה בבית או בגינה בטכנולוגיות מתקדמות.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-search"></i>
+                <h3>איתור נזילות</h3>
+                <p>שימוש במצלמות טרמיות לאיתור מדויק של נזילות ללא הרס מיותר.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section-padding">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 class="section-title">עבודות מהשטח</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800" alt="תיקון כיור">
+                <div class="gallery-caption">התקנת כיור מטבח מודרני</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1504148454958-8551fd00778c?auto=format&fit=crop&q=80&w=800" alt="צנרת">
+                <div class="gallery-caption">חידוש תשתיות מים</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1620629761711-93cff1031340?auto=format&fit=crop&q=80&w=800" alt="חדר רחצה">
+                <div class="gallery-caption">התקנת ברזים בחדר רחצה</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1605906302484-efc3973ee4ad?auto=format&fit=crop&q=80&w=800" alt="כלי עבודה">
+                <div class="gallery-caption">עבודה עם ציוד מקצועי</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section-padding testimonials">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 class="section-title">לקוחות ממליצים</h2>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"מאור הגיע אלינו תוך פחות משעה לפתיחת סתימה רצינית בביוב. עבד נקי, מסודר ולקח מחיר הוגן מאוד. מומלץ בחום!"</p>
+                <span class="customer-name">יוסי מלכה, חיפה</span>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"החלפנו את כל הברזים בבית. השירות היה אדיב, המקצועיות ניכרת בכל שלב והתוצאה מושלמת."</p>
+                <span class="customer-name">דנה כהן, קרית מוצקין</span>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"איתרו לי נזילה בקיר בעזרת מצלמה תרמית בלי לשבור סתם מרצפות. חסכו לי המון כסף וכאב ראש."</p>
+                <span class="customer-name">ישראל לוי, עכו</span>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"שירות מצוין, הגיעו בשעה שקבענו, עבדו מהר והשאירו נקי. כיף שיש בעלי מקצוע כאלה."</p>
+                <span class="customer-name">רונית א., נהריה</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="section-padding" style="background: white;">
+        <div style="text-align: center;">
+            <h2 class="section-title">למה לבחור בנו?</h2>
+        </div>
+        <div class="advantages-list">
+            <div class="adv-item"><i class="fas fa-check-circle"></i> זמינות 24/7 למקרי חירום</div>
+            <div class="adv-item"><i class="fas fa-check-circle"></i> הגעה מהירה לכל אזור הצפון</div>
+            <div class="adv-item"><i class="fas fa-check-circle"></i> מחירים שקופים והוגנים</div>
+            <div class="adv-item"><i class="fas fa-check-circle"></i> אחריות מלאה על כל עבודה</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 class="section-title">צרו קשר</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-form">
+                <form onsubmit="event.preventDefault(); alert('ההודעה נשלחה בהצלחה! נחזור אליך בהקדם.');">
+                    <div class="form-group">
+                        <label>שם מלא</label>
+                        <input type="text" placeholder="הכנס את שמך" required>
+                    </div>
+                    <div class="form-group">
+                        <label>טלפון</label>
+                        <input type="tel" placeholder="מספר טלפון לחזרה" required>
+                    </div>
+                    <div class="form-group">
+                        <label>תיאור הבעיה</label>
+                        <textarea rows="4" placeholder="ספר לנו במה נוכל לעזור..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">שליחת בקשה</button>
+                </form>
+            </div>
+            <div class="contact-info-box">
+                <h3>פרטי התקשרות</h3>
+                <br>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <strong>טלפון:</strong><br>
+                        <a href="tel:0501234567">050-1234567</a>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>אזור פעילות:</strong><br>
+                        חיפה, קריות, עכו, נהריה והסביבה.
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <strong>וואטסאפ:</strong><br>
+                        <a href="#">לחצו למעבר לצ'אט</a>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>שעות פעילות:</strong><br>
+                        ראשון - חמישי: 24 שעות<br>
+                        שישי: עד כניסת שבת
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo" style="justify-content: center; color: white; margin-bottom: 15px;">
+            <i class="fas fa-faucet-drip"></i>
+            <span>מאור אינסטלציה בע״מ</span>
+        </div>
+        <p>© כל הזכויות שמורות למאור אינסטלציה בע״מ | 2024</p>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/972501234567" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
